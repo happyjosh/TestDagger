@@ -20,4 +20,9 @@ public class MainModule {
     MainView provideMainView() {
         return mMainView;
     }
+
+    @Provides
+    Author provideAuthor() {
+        return new Author("嘻嘻嘻嘻");
+    }
 }

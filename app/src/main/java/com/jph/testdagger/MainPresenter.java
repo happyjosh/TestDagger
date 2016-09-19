@@ -9,15 +9,17 @@ import javax.inject.Inject;
 public class MainPresenter {
 
     private MainView mMainView;
+    private Author mAuthor;
 
     @Inject
-    public MainPresenter(MainView mainView) {
+    public MainPresenter(MainView mainView, Author author) {
         mMainView = mainView;
+        mAuthor = author;
     }
 
     public void loadName() {
         //假装获取名称
         //获取名称成功
-        mMainView.setAuthorNameText("蒋鹏辉");
+        mMainView.setAuthorNameText(mAuthor.getName());
     }
 }
