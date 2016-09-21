@@ -1,4 +1,7 @@
-package com.jph.testdagger;
+package com.jph.testdagger.di.module;
+
+import com.jph.testdagger.Author;
+import com.jph.testdagger.MainView;
 
 import dagger.Module;
 import dagger.Provides;
@@ -22,7 +25,7 @@ public class MainModule {
     }
 
     @Provides
-    Author provideAuthor() {
+    Author provideXXAuthor() {
         return new Author("嘻嘻嘻嘻");
     }
 }

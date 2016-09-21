@@ -5,7 +5,7 @@ package com.jph.testdagger;
  */
 
 public class Author {
-    private String name;
+    private String name = "默认默认";
 
     public Author(String name) {
         this.name = name;
