@@ -1,6 +1,9 @@
 package com.jph.dagger.sample.di.module;
 
+import com.jph.dagger.sample.model.UserInfo;
 import com.jph.dagger.sample.view.MainView;
+
+import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
@@ -21,4 +24,15 @@ public class MainModule {
         return mMainView;
     }
 
+    @Provides
+    @Named(value = "jph")
+    public UserInfo provideJPHUserInfo() {
+        return new UserInfo("jph");
+    }
+
+    @Provides
+    @Named(value = "hui")
+    public UserInfo provideHuiUserInfo() {
+        return new UserInfo("灰来灰去");
+    }
 }
