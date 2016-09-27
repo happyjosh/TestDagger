@@ -8,7 +8,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jph.testdagger.di.component.DaggerMainComponent;
-import com.jph.testdagger.di.module.MainModule;
 
 import javax.inject.Inject;
 
@@ -17,10 +16,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MainView {
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     @Inject
     Context mContext;
-
     @Inject
     MainPresenter mMainPresenter;
 
@@ -33,18 +32,18 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setContentView(R.layout.activity_main);
         DaggerMainComponent.builder()
                 .applicationComponent(((MyApplication) getApplication()).getApplicationComponent())
-                .mainModule(new MainModule(this))
+//                .mainModule(new MainModule(this))
                 .build()
                 .inject(this);
         ButterKnife.bind(this);
 
 //        mMainPresenter = new MainPresenter(this);
+//        Log.i(TAG,""+mAuthor);
     }
 
     @OnClick(R.id.main_btn)
     public void onClickBtn(View v) {
         mMainPresenter.loadName();
-        Toast.makeText(mContext, "注入的AppContext", Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.jph.testdagger.di.module;
 
 import com.jph.testdagger.Author;
 import com.jph.testdagger.MainView;
+import com.jph.testdagger.di.scope.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;
@@ -20,12 +21,14 @@ public class MainModule {
 
 
     @Provides
+    @PerActivity
     MainView provideMainView() {
         return mMainView;
     }
 
     @Provides
-    Author provideXXAuthor() {
+    @PerActivity
+    Author provideAuthor() {
         return new Author("嘻嘻嘻嘻");
     }
 }

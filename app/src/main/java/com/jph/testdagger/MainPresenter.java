@@ -1,5 +1,8 @@
 package com.jph.testdagger;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import javax.inject.Inject;
 
 /**
@@ -7,29 +10,40 @@ import javax.inject.Inject;
  */
 
 public class MainPresenter {
-
-    private MainView mMainView;
-    private Author mAuthor;
-
-
-//    @Inject
-//    public MainPresenter(MainView mainView) {
-//        mMainView = mainView;
-//    }
+    private static final String TAG = MainPresenter.class.getSimpleName();
 
     @Inject
-    public MainPresenter(MainView mainView, Author author) {
-        mMainView = mainView;
-        mAuthor = author;
+    Context mContext;
+//    @Inject
+//    MainView mMainView;
+    //    @Inject
+//    Author mAuthor;
+//    @Inject
+//    Loader mLoader;
+
+    @Inject
+    public MainPresenter() {
     }
+
+
+    //    @Inject
+//    public MainPresenter(MainView mainView, Loader loader) {
+//        mMainView = mainView;
+//        mLoader = loader;
+//    }
+//
+//    @Inject
+//    public MainPresenter(MainView mainView, Author author) {
+//        mMainView = mainView;
+//        mAuthor = author;
+//    }
 
     public void loadName() {
         //假装获取名称
         //获取名称成功
-        if (mAuthor == null) {
-            mMainView.setAuthorNameText("空空空");
-        } else {
-            mMainView.setAuthorNameText(mAuthor.getName());
-        }
+//        mMainView.setAuthorNameText(mLoader.getAuthor().getName());
+//        Log.i(TAG, "" + mLoader.getAuthor());
+
+        Toast.makeText(mContext, "Presenter注入的AppContext", Toast.LENGTH_SHORT).show();
     }
 }
