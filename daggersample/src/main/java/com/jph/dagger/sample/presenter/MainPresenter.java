@@ -1,20 +1,21 @@
 package com.jph.dagger.sample.presenter;
 
+import android.util.Log;
+
 import com.jph.dagger.sample.model.UserInfo;
 import com.jph.dagger.sample.view.MainView;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 /**
  * Created by jph on 2016/9/22.
  */
 
 public class MainPresenter {
+    private static final String TAG = MainPresenter.class.getSimpleName();
 
     MainView mMainView;
     @Inject
-    @Named(value = "hui")
     UserInfo mUserInfo;
 
     @Inject
@@ -29,5 +30,6 @@ public class MainPresenter {
 //        UserInfo userInfo = new UserInfo("灰来灰去");
 
         mMainView.showName(mUserInfo.getName());//显示名称
+        Log.i(TAG, "UserInfo: " + mUserInfo);
     }
 }
