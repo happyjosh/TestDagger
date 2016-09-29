@@ -6,11 +6,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.jph.dagger.sample.App;
 import com.jph.dagger.sample.R;
 import com.jph.dagger.sample.di.component.DaggerMainComponent;
 import com.jph.dagger.sample.di.module.MainModule;
 import com.jph.dagger.sample.model.UserInfo;
 import com.jph.dagger.sample.presenter.MainPresenter;
+import com.jph.dagger.sample.utils.Toaster;
 
 import javax.inject.Inject;
 
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
     MainPresenter mMainPresenter;
     @Inject
     UserInfo mUserInfo;
+    @Inject
+    Toaster mToaster;
 
     @Bind(R.id.main_txt_name)
     TextView mNameTxt;
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         ButterKnife.bind(this);
 
         DaggerMainComponent.builder()
+                .appComponent(((App) getApplication()).getAppComponent())
                 .mainModule(new MainModule(this))
                 .build()
                 .inject(this);
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @OnClick(R.id.main_btn_show_name)
     public void onClickShowName(View v) {
+        mToaster.show("开始加载用户数据..");
         mMainPresenter.loadUserInfo();
         Log.i(TAG, "UserInfo: " + mUserInfo);
     }
