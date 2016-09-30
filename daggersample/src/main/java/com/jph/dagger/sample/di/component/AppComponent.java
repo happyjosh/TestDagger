@@ -1,7 +1,7 @@
 package com.jph.dagger.sample.di.component;
 
 import com.jph.dagger.sample.di.module.AppModule;
-import com.jph.dagger.sample.utils.Toaster;
+import com.jph.dagger.sample.di.module.MainModule;
 
 import javax.inject.Singleton;
 
@@ -14,5 +14,7 @@ import dagger.Component;
 @Component(modules = AppModule.class)
 public interface AppComponent {
 
-    Toaster getToaster();
+//    Toaster getToaster();
+
+    MainComponent getMainComponent(MainModule mainModule);
 }

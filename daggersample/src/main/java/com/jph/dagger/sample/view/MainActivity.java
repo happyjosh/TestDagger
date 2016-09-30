@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.jph.dagger.sample.App;
 import com.jph.dagger.sample.R;
-import com.jph.dagger.sample.di.component.DaggerMainComponent;
 import com.jph.dagger.sample.di.module.MainModule;
 import com.jph.dagger.sample.model.UserInfo;
 import com.jph.dagger.sample.presenter.MainPresenter;
@@ -38,12 +37,13 @@ public class MainActivity extends AppCompatActivity implements MainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        DaggerMainComponent.builder()
-                .appComponent(((App) getApplication()).getAppComponent())
-                .mainModule(new MainModule(this))
-                .build()
+        ((App) getApplication()).getAppComponent().getMainComponent(new MainModule(this))
                 .inject(this);
+//        DaggerMainComponent.builder()
+////                .appComponent(((App) getApplication()).getAppComponent())
+//                .mainModule(new MainModule(this))
+//                .build()
+//                .inject(this);
     }
 
     @OnClick(R.id.main_btn_show_name)

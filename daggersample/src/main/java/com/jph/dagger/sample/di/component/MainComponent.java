@@ -4,13 +4,13 @@ import com.jph.dagger.sample.di.module.MainModule;
 import com.jph.dagger.sample.di.scope.PerActivity;
 import com.jph.dagger.sample.view.MainActivity;
 
-import dagger.Component;
+import dagger.Subcomponent;
 
 /**
  * Created by jph on 2016/9/22.
  */
 @PerActivity
-@Component(dependencies = AppComponent.class, modules = MainModule.class)
+@Subcomponent(modules = MainModule.class)
 public interface MainComponent {
     void inject(MainActivity mainActivity);
 }
