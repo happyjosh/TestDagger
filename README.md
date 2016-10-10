@@ -155,6 +155,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 ```
 若是构造方法的参数：
 ```java
+    @Inject
     public MainPresenter(MainView mainView, @Named(value = "jph") UserInfo userInfo) {
         mMainView = mainView;
         mUserInfo = userInfo;
