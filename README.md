@@ -155,10 +155,13 @@ public class MainActivity extends AppCompatActivity implements MainView {
 ```
 若是构造方法的参数：
 ```java
-n
+    public MainPresenter(MainView mainView, @Named(value = "jph") UserInfo userInfo) {
+        mMainView = mainView;
+        mUserInfo = userInfo;
+    }
 ```
 ## @Scope
-和`@Qualifier`一样,`@Scope`也是用来标识新建注解的，***以下用`@MyScope`表示**。
+和`@Qualifier`一样,`@Scope`也是用来标识新建注解的，**以下用`@MyScope`表示**。
 
 - 用`@MyScope `标注的 Component，如果 Moudle 中的 `@Provides` 也被`@MyScope`标注，那么在这个Component的生命周期内 ，这个 provide提供的对象是单例的。具体是通过`DoubleCheck`这个类实现的。
 - 通过构造方法标注`@Inject`进行注入的，`@MyScope`标注在类名处。
