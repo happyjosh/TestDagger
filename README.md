@@ -161,6 +161,7 @@ n
 和`@Qualifier`一样,`@Scope`也是用来标识新建注解的，***以下用`@MyScope`表示**。
 
 - 用`@MyScope `标注的 Component，如果 Moudle 中的 `@Provides` 也被`@MyScope`标注，那么在这个Component的生命周期内 ，这个 provide提供的对象是单例的。具体是通过`DoubleCheck`这个类实现的。
+- 通过构造方法标注`@Inject`进行注入的，`@MyScope`标注在类名处。
 - 若`Provides`处标记了`@MyScope`，则对应的`Component`也必须标注，但是标注了`@MyScope`的`Component`对应`Module`中的`Provides`不是必须标注`@MyScope`。
 - 会判断依赖的`Component`之间是否都使用了`@MyScope`标识,未标注`@Scope`的Component不能依赖标注了`@Scope`的Component。
 
